@@ -27,6 +27,14 @@ protected:
     /**The power needed to win the game */
     UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Power", Meta = (BlueprintProtected = "true"))
     float PowerToWin;
+    
+    /** The Widget class to use for our HUD screen */
+    UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Power", Meta = (BlueprintProtected = "true"))
+    TSubclassOf<class UUserWidget> HUDWidgetClass;
+    
+    /** The instance of the HUD */
+    UPROPERTY()
+    class UUserWidget* CurrentWidget;
 };
 
 

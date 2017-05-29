@@ -4,6 +4,8 @@
 #include "BatteryCollectorGameMode.h"
 #include "BatteryCollectorCharacter.h"
 #include "Kismet/GameplayStatics.h"
+#include "Blueprint/UserWidget.h"
+#include "SpawnVolume.h"
 
 ABatteryCollectorGameMode::ABatteryCollectorGameMode()
 {
@@ -29,6 +31,15 @@ void ABatteryCollectorGameMode::BeginPlay()
     if (MyCharacter)
     {
         PowerToWin = (MyCharacter->GetInitialPower())*1.25f;
+    }
+    
+    if (HUDWidgetClass != nullptr)
+    {
+        CurrentWidget = CreateWidget<UUserWidget>(GetWorld(), HUDWidgetClass);
+        if (CurrentWidget != nullptr)
+        {
+            CurrentWidget->AddToViewport();
+        }
     }
 }
 
